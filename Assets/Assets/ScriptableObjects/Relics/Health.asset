@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   relicName: Health
   description: idk this is a test
-  icon: {fileID: 0}
+  icon: {fileID: 2747690628134850419, guid: a415579b9b37c45b9899b45172e74111, type: 3}
   effectType: 1
