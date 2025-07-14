@@ -354,10 +354,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 1694211860}
-  handZone: {fileID: 526289337}
+  handZone: {fileID: 1657343200}
   cardUIPrefab: {fileID: 1747733302236679810, guid: 80ee955d8de674f518f9aeb3cd4ee3b6, type: 3}
   startingCards:
   - {fileID: 11400000, guid: d2763f06ab2784006980e18660eade34, type: 2}
+  - {fileID: 11400000, guid: b30afceaee94f4ca39b94bd999e6ff74, type: 2}
+  - {fileID: 11400000, guid: b30afceaee94f4ca39b94bd999e6ff74, type: 2}
+  - {fileID: 11400000, guid: b30afceaee94f4ca39b94bd999e6ff74, type: 2}
   - {fileID: 11400000, guid: b30afceaee94f4ca39b94bd999e6ff74, type: 2}
 --- !u!4 &256536951
 Transform:
@@ -632,7 +635,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 20
+  m_Spacing: 10
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -776,7 +779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyName: Slime
-  maxHP: 1
+  maxHP: 4
 --- !u!1 &1935617559
 GameObject:
   m_ObjectHideFlags: 0
