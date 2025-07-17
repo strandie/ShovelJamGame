@@ -35,6 +35,18 @@ public class Enemy : MonoBehaviour
             battleManager.OnEnemyDefeated();
         }
 
-        Destroy(gameObject);
+        // Instead of destroying, disable visuals or hide
+        gameObject.SetActive(false);
     }
+
+    public void Respawn()
+    {
+        maxHP += 4;
+        currentHP = maxHP;
+        gameObject.SetActive(true);
+
+        Debug.Log($"{enemyName} respawned with {maxHP} HP.");
+    }
+
+
 }
