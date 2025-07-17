@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class CardUI : MonoBehaviour
 {
@@ -12,11 +13,13 @@ public class CardUI : MonoBehaviour
 
     private Card cardData;
     private Enemy target;
+    private Action<Card> onCardSelected;
 
-    public void Initialize(Card card, Enemy enemy)
+    public void Initialize(Card card, Enemy enemy, Action<Card> selectionCallback = null)
     {
         cardData = card;
         target = enemy;
+        onCardSelected = selectionCallback;
 
         nameText.text = card.cardName;
         descriptionText.text = card.cardEffect;
@@ -25,6 +28,7 @@ public class CardUI : MonoBehaviour
         if (artworkImage != null && card.artwork != null)
             artworkImage.sprite = card.artwork;
 
+        playButton.onClick.RemoveAllListeners();
         playButton.onClick.AddListener(OnPlay);
     }
 
@@ -35,6 +39,9 @@ public class CardUI : MonoBehaviour
         if (target != null)
         {
             target.TakeDamage(cardData.damageAmount);
+        } else
+        {
+            onCardSelected?.Invoke(cardData);
         }
 
         Destroy(gameObject);
