@@ -5,6 +5,8 @@ using TMPro;
 public class CardUI : MonoBehaviour
 {
     public TextMeshProUGUI nameText;
+    public TextMeshProUGUI descriptionText;
+    public TextMeshProUGUI cost;
     public Button playButton;
     public Image artworkImage;
 
@@ -17,6 +19,8 @@ public class CardUI : MonoBehaviour
         target = enemy;
 
         nameText.text = card.cardName;
+        descriptionText.text = card.cardEffect;
+        cost.text = card.cost;
 
         if (artworkImage != null && card.artwork != null)
             artworkImage.sprite = card.artwork;
