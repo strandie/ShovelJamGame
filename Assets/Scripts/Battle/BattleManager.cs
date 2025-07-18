@@ -36,7 +36,7 @@ public class BattleManager : MonoBehaviour
         Debug.Log("Enemy defeated! The game will now progress to the next stage.");
         enemiesDefeated++;
         relicRewardManager.ShowRelicRewards(enemiesDefeated);
-        ShowCardSelectionUI();
+        //ShowCardSelectionUI();
 
     }
 

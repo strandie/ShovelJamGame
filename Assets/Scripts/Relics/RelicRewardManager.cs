@@ -2,18 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RelicRewardManager : MonoBehaviour
 {
-    public GameObject relicButtonPrefab; // prefab representing a relic option button
-    public Transform rewardPanel; // UI panel to display relics
+    public GameObject relicButtonPrefab; 
+    public Transform rewardPanel; 
 
-    public List<Relic> allRelics; // All possible relics you defined
+    public List<Relic> allRelics; 
 
     private System.Action onRelicSelectedCallback;
 
+    public Transform collectedRelicsPanel;  
+    public GameObject collectedRelicIconPrefab;  
+
+
     public void ShowRelicRewards(int stage)
     {
+        rewardPanel.gameObject.SetActive(true);
+
         List<Relic> relicOptions = new List<Relic>();
 
         RelicEffectType effectTypeToShow = RelicEffectType.None;
@@ -38,7 +45,7 @@ public class RelicRewardManager : MonoBehaviour
         else
         {
             relicOptions = allRelics
-                .Where(r => r.effectType == RelicEffectType.None) // or some other condition for "other relics"
+                .Where(r => r.effectType == RelicEffectType.None) 
                 .OrderBy(r => Random.value)
                 .Take(3)
                 .ToList();
@@ -68,12 +75,20 @@ public class RelicRewardManager : MonoBehaviour
         RelicManager.Instance.AddRelic(selectedRelic);
         Debug.Log($"Selected Relic: {selectedRelic.relicName}");
 
-        // Hide rewards UI
+        /* Hide rewards UI
         foreach (Transform child in rewardPanel)
         {
             Destroy(child.gameObject);
-        }
+        }*/
 
+        // Add to collected relics display
+        GameObject relicIcon = Instantiate(collectedRelicIconPrefab, collectedRelicsPanel);
+        Image iconImage = relicIcon.GetComponent<Image>();
+        iconImage.sprite = selectedRelic.icon;
+
+        // Hide rewards UI
+        rewardPanel.gameObject.SetActive(false);
+    
         // Progress game (could call next enemy spawn here if needed)
     }
 }
